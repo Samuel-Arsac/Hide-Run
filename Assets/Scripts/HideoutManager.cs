@@ -21,12 +21,15 @@ public class HideoutManager : LocalManager<HideoutManager>
     {
         currentHideout.GetComponent<CapsuleCollider>().enabled = false;
 
-        if(availableHideouts == null)
+        if(availableHideouts.Count == 0)
         {
-            Debug.Log("Victoire");
+            Time.timeScale = 0f;
+            GameManager.Instance.CallOnVictory();
+            UIManager.Instance.DisplayVictorySection();
         }
         else
         {
+            
             foreach (Hideout m in availableHideouts)
             {
                 m.GetComponent<MeshRenderer>().enabled = true;

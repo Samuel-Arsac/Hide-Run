@@ -20,6 +20,7 @@ public class HideoutManager : LocalManager<HideoutManager>
     public void MovementFinished()
     {
         currentHideout.GetComponent<CapsuleCollider>().enabled = false;
+        PlayerController.Instance.PlayerIsHidden();
 
         if(availableHideouts.Count == 0)
         {

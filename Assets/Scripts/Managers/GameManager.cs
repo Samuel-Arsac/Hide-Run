@@ -43,12 +43,16 @@ public class GameManager : LocalManager<GameManager>
                 ProgressionManager.Instance.ConfirmLevelOneCompletion();
                 break;
             case ("Level02"):
+                Debug.Log("Level 2 completed");
                 break;
             case ("Level03"):
+                Debug.Log("Level 3 completed");
                 break;
             case ("Level04"):
+                Debug.Log("Level 4 completed");
                 break;
             case ("Level05"):
+                Debug.Log("Level 5 completed");
                 break;
         }
     }

@@ -10,6 +10,10 @@ public class GuardController : MonoBehaviour
     private int waypointIndex;
     private Vector3 target;
 
+    [SerializeField] private LayerMask whatIsPlayer;
+    [SerializeField] private float maxDistanceView;
+
+
     private void Start()
     {
         UpdateDestination();
@@ -17,10 +21,25 @@ public class GuardController : MonoBehaviour
 
     private void Update()
     {
-        if(Vector3.Distance(transform.position, target ) < 1.35)
+        if(Vector3.Distance(transform.position, target ) < 1.3)
         {
             IterateWaypointIndex();
             UpdateDestination();
+        }
+
+
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * 3;
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, forward, out hit, maxDistanceView, whatIsPlayer))
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            PlayerController.Instance.PlayerSeen();
+        }
+        else
+        {
+            Debug.DrawRay(transform.position,forward, Color.white);
+            PlayerController.Instance.PlayerBecomeVisible();
         }
     }
 

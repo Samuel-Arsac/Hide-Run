@@ -9,7 +9,7 @@ public class PlayerController : LocalManager<PlayerController>
     [Header("Agent")]
     [SerializeField] private NavMeshAgent playerAgent;
     [SerializeField] private Transform agentTransform;
-    [SerializeField] private PlayerStatus currentStatus = PlayerStatus.Hidden;
+    public PlayerStatus currentStatus = PlayerStatus.Hidden;
     private Vector3 target;
     private bool isMoving = false;
 
@@ -17,6 +17,8 @@ public class PlayerController : LocalManager<PlayerController>
     {
         Hidden,
         Visible,
+        Seen,
+        Spotted,
     }
 
     public void StartMovementAgent(Vector3 destination)
@@ -55,6 +57,16 @@ public class PlayerController : LocalManager<PlayerController>
     public void PlayerBecomeVisible()
     {
         currentStatus = PlayerStatus.Visible;
+    }
+
+    public void PlayerBecomeSpotted()
+    {
+        currentStatus = PlayerStatus.Spotted;
+    }
+
+    public void PlayerSeen()
+    {
+        currentStatus = PlayerStatus.Seen;
     }
 
     public void PlayerIsHidden()

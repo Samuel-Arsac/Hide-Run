@@ -36,11 +36,6 @@ public class GuardController : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             PlayerController.Instance.PlayerSeen();
         }
-        else
-        {
-            Debug.DrawRay(transform.position,forward, Color.white);
-            PlayerController.Instance.PlayerBecomeVisible();
-        }
     }
 
     public void UpdateDestination()

@@ -12,6 +12,7 @@ public class PlayerController : LocalManager<PlayerController>
     public PlayerStatus currentStatus = PlayerStatus.Hidden;
     private Vector3 target;
     private bool isMoving = false;
+    private bool isSeen = false;
 
     public enum PlayerStatus
     {
@@ -67,10 +68,12 @@ public class PlayerController : LocalManager<PlayerController>
     public void PlayerSeen()
     {
         currentStatus = PlayerStatus.Seen;
+        isSeen = true;
     }
 
     public void PlayerIsHidden()
     {
         currentStatus = PlayerStatus.Hidden;
+        isSeen = false;
     }
 }
